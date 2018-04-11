@@ -1,23 +1,24 @@
-var url = 'http://api.icndb.com/jokes/random';
-	
-var button = document.getElementById('get-joke');
-
-//$(document).ready(function() { //Solution for willing
-	//getJoke();
-//});
-
-button.addEventListener('click', function() {
+$(document).ready(function() {
 	getJoke();
+
+	var url = 'http://api.icndb.com/jokes/random';
+	
+	//var button = document.getElementById('get-joke');
+
+	//button.addEventListener('click', function() {
+	//	getJoke();
+	//});
+
+	var paragraph = document.getElementById('joke');
+
+	function getJoke() {
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET', url);
+		xhr.addEventListener('load', function() {
+			var response = JSON.parse(xhr.response);
+			console.log(response);
+			paragraph.innerHTML = response.value.joke;
+		});
+		xhr.send();
+	};
 });
-
-var paragraph = document.getElementById('joke');
-
-function getJoke() {
-	var xhr = new XMLHttpRequest();
-	xhr.open('GET', url);
-	xhr.addEventListener('load', function() {
-		var response = JSON.parse(xhr.response);
-		paragraph.innerHTML = response.value.joke;
-	});
-	xhr.send();
-};
