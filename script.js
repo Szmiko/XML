@@ -3,11 +3,11 @@ $(document).ready(function() {
 
 	var url = 'http://api.icndb.com/jokes/random';
 	
-	//var button = document.getElementById('get-joke');
+	var button = document.getElementById('get-joke');
 
-	//button.addEventListener('click', function() {
-	//	getJoke();
-	//});
+	button.addEventListener('click', function() {
+		getJoke();
+	});
 
 	var paragraph = document.getElementById('joke');
 
@@ -16,7 +16,9 @@ $(document).ready(function() {
 		xhr.open('GET', url);
 		xhr.addEventListener('load', function() {
 			var response = JSON.parse(xhr.response);
-			console.log(response);
+			if (xhr.status == 200) {
+				console.log(response);
+			};
 			paragraph.innerHTML = response.value.joke;
 		});
 		xhr.send();
