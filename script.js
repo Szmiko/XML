@@ -19,7 +19,9 @@ $(document).ready(function() {
 			if (xhr.status == 200) {
 				console.log(response);
 			};
+			if (response.value.joke !== null)
 			paragraph.innerHTML = response.value.joke;
+			else paragraph.innerHTML = "Przychodzi baba do lekarza...";
 		});
 		xhr.send();
 	};
