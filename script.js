@@ -17,9 +17,8 @@ $(document).ready(function() {
 		xhr.addEventListener('load', function() {
 			var response = JSON.parse(xhr.response);
 			if (xhr.status == 200) {
-				console.log(response);
+				paragraph.innerHTML = response.value.joke || "Przychodzi baba do lekarza...";	
 			};
-			paragraph.innerHTML = response.value.joke || "Przychodzi baba do lekarza...";
 		});
 		xhr.send();
 	};
